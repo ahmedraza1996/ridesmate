@@ -1,131 +1,120 @@
+import React from 'react';
+import { StyleSheet, Text, View, TextInput , TouchableOpacity} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient'
 
-import React, { Component } from 'react';
-import { StyleSheet, View, TextInput,Alert, Picker} from 'react-native';
-import { AsyncStorage, YellowBox } from 'react-native';
-import {  Button, Text } from "react-native";
-import DatePicker from 'react-native-datepicker'
-
-import { Font } from "expo";
-export default class ButtonExample extends Component {
-  constructor(props) {
-
-    super(props)
-    
-    this.state = {
-      desc:null,
-      plate:null,
-      year:null,
-      progressVisible: false,
-
-    }
-
-  }
-  
- componentDidMount(){
-  console.log(new Date().getDate())
-
- }
-
-  
+export default class App extends React.Component {
   render() {
-    
     return (
-      <View style={styles.container}>
-        <View style={styles.titleView}>
-          <Text style={styles.titleText}>
-           To Fast
-             </Text>
-        </View>
-
-        <View style={styles.inputView}>
-          <Text style={styles.text}>Enter your username</Text>
-          <TextInput style={styles.inputText}   placeholder="Username"/>
-          
-      </View>
-        
-      <View style={styles.inputView}>
-          <Text style={styles.text}>Enter your password</Text>
-          <TextInput style={styles.inputText} secureTextEntry={true}  placeholder="Password"/>
-          
-      </View>
       
-     
-      
-             <View style={styles.buttonView}>
-        <View style={styles.buttonView}>
-        <Button dark style = {styles.btn} title="Next" /> 
+      <LinearGradient
+      colors={['#03396c', 'white']}
+        style={{flex: 1}}
+      >
+       <View style={styles.container}>
+         <View style={styles.elementframetop}>
+         <Text style={styles.headText}>Rides Mate</Text>
           
-        </View>
+         </View>
+          <View style={styles.elementFrame}>
+              <View style={styles.formheader} >
+                  <Text style={styles.formheading}>Sign In</Text>
+              </View>
+              <View  style={[{padding: 10},styles.formbody]}>
+                  <View >
+                    <Text style={{fontSize:16, fontWeight:'bold', color: "#4c4c4c"}}>Email</Text>
+                    <TextInput placeholder="Enter your email" style={{ borderBottomColor: '#646464', borderBottomWidth: 2,height:50 }}></TextInput>
+                  </View>
+                  <View style={{marginTop: 20}}>
+                    <Text style={{fontSize:16, fontWeight:'bold', color: "#4c4c4c"}}>Password</Text>
+                    <TextInput placeholder="Enter your password" style={{ borderBottomColor: '#646464', borderBottomWidth: 2,height:50 }}></TextInput>
+                  </View>
+                  <View style={{marginTop: 20}}>
+                    <TouchableOpacity>
+                  <Text style={{fontSize:16, fontWeight:'bold', color: "#4c4c4c"}}>Forgot password?</Text>
+                  </TouchableOpacity>
+                  </View>
+                  <View style={{marginTop: 50, alignItems:'center'}}>
+                                  <TouchableOpacity
+                        style={styles.button}
+                       // onPress={this.onPress}
+                      >
+                          <Text style={{color: 'white'}}> Sign in </Text>
+                     </TouchableOpacity>
+                     <View style={{flexDirection:'row', marginTop: 10}}>
+                     <Text>Don't have an account?</Text> 
+                     <TouchableOpacity
+                        
+                       
+                      >
+                          <Text style={{fontWeight:'bold',color:'#005b96'}}> Sign Up </Text>
+                     </TouchableOpacity>
+                     </View>
+                     
+                  </View>
+              </View>
+              
+          </View>
+       </View>
 
-        </View>
-  
-      </View>
+      </LinearGradient>
+      
     );
-  
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
+ 
     flex: 1,
-    backgroundColor: 'white',
-    padding: 40,
+    
   },
-
-  titleView: {
-    flex: 2,
-    justifyContent: 'center',
+  headText:{
+    fontSize: 56,
+    position: 'absolute',
+    alignContent: 'center',
     alignItems: 'center',
+    left: '5%',  
+    top: '5%',   //status bar height
+    color: 'white',
+    fontWeight: 'bold',
+    flex: 1
   },
-
-  inputView: {
-    flex: 3,
-    top: 0,
-    left: 5,
-    right: 5
-  },
-
-  buttonView: {
+  elementframetop: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  elementFrame: {
+    flex: 4,
+    backgroundColor:"white",
+    borderRadius: 40,
+    padding: 15,
+  },
+  formheader: {
+    flex: 1,
+    
+
+  },
+  formbody: {
+    flex: 4,
+    // backgroundColor: "green"
+    
+  }, 
+  formheading: {
+    fontSize: 32,
+    left: '5%',
+    top: '5%',
+    color: '#646464',
+    fontWeight: 'bold'
+  },
+  textLabel:{
+
+  },
+  button: {
     alignItems: 'center',
-  },
+    backgroundColor: '#005b96',
+    padding: 10, 
+    width: 300,
+    color:'white', 
+    borderRadius: 20
 
-  titleText: {
-    color: 'black',
-    fontSize: 40,
-    fontFamily: 'normal'
-  },
-
-  text: {
-    fontFamily: 'normal',
-    color: 'black',
-    fontSize: 15
-  },
-
-  textBottom: {
-    fontFamily: 'normal',
-    color: 'black',
-    fontSize: 15
-  },
-
-  inputText: {
-    height: 36,
-    padding: 10,
-    marginTop: 10,
-    marginBottom: 20,
-    fontSize: 14,
-    borderWidth: 1,
-   
-    backgroundColor: 'white',
-  },
-
-  btn: {
-    height: 50,
-    width: 200,
-    color: 'black',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
